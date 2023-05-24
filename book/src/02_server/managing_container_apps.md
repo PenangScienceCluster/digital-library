@@ -1,4 +1,4 @@
-# Managing Container Apps
+﻿# Managing Container Apps
 
 The digital library is being served using Docker containers. In a nutshell, running a Docker app requires firstly a Docker image, and secondly a Docker Container which will is the running app based on the Docker image. To create our library container, we will need to install the app Container Station. 
 
@@ -8,14 +8,12 @@ The digital library is being served using Docker containers. In a nutshell, runn
 
 1. Launch Container Station and accept all default options.
 
-## Managing Server Files and Folders
-    
-Data is managed using volumes attached from the host file system to Docker containers. 
+Data is managed using volumes attached from the host file system to Docker containers. For this set-up, we will set up a non-root user to run the Docker containers, alongside volumes that are needed to store the associated app data.
 
-1. Download an FTP client like Filezilla.
+## Creating a Docker user
 
-1. Connect to the server using the same admin credentials set up earlier. The hostname is 192.168.100.100. 
+1. Click on Users in QTS.
 
-1. Right-click and create your folders.
+1. Create a user named `dockuser`.
 
-1. Consult the next section for creating folders for Calibre-Web.
+1. Set a password. Leave all settings at default options.
