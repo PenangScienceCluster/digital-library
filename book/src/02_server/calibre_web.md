@@ -1,24 +1,44 @@
-# Installing Calibre-Web as a Docker Container
+﻿# Installing Calibre-Web as a Docker Container
 
-1. Using an FTP client (e.g. Filezilla) create a `books` folder and a `config` folder in a location Container Station can access. By default, `/Container`, `/Multimedia`, and `/Public` should be accessible. In our example setup, we created a folder named `CalibreLibrary` in the `/Multimedia` folder. And within it we nested the `books` and `config` folders.
+## Create Calibre-Web Data Folders
+
+1. Open File Station in QTS.
+
+1. Create a Shared Folder. For Calibre, a folder named `calibre` can be created under DataVol1.
+
+1. In "Configure access privileges for users", give `dockuser` read/write access. Leave the rest as default.
+
+1. In the new `calibre` shared folder, create two folders named `books` and `config`.
+
+1. Get the UID/GID of 'dockuser` with `id dockuser` in ssh.
 
 1. Download our Calibre seed library to your computer at:
 
     [github.com/PenangScienceCluster/qnap-digital-library](https://github.com/PenangScienceCluster/qnap-digital-library)
 
-1. Copy the contents of the `calibre-seed` folder to the `books` folder created earlier.
+1. Copy the contents of `calibre-seed/books` folder to the `books` folder created earlier. By navigating into the books folder, the following `rsync` command will copy the folder contents to the right folder:
 
-1. Once the folders are set up, open Container Station and click on Create. In the search box type in `calibre`. When you see the Docker image `linuxserver/calibre-web` click on the install button.
+	`rsync -ahvz . <user>@<hostname>:/share/calibre/books/`
+
+1. Set permissions for the folder to `dockuser` with:
+
+	`sudo chown -R <UID>:<GID> /share/calibre`
+
+## Create Calibre-Web Container
+
+1. Open Container Station and click on Create. In the search box type in `calibre`. When you see the Docker image `linuxserver/calibre-web` click on the install button.
 
 1. Select the latest image, and click on install. Accept the disclaimer.
 
 1. In the "Create Container" dialog box, click on "Advanced Settings".
 
+1. In Environment, create two fields, `PUID` and `PGID`, filling in the values of `dockuser` from earlier.
+
 1. Select `Shared Folders`.
 
-1. Click the "Add" button above "Volume from host" and in the first column, choose the `config` folder created earlier. Under the `Mount Point` column enter `/config` and make sure the "Write" checkbox is selected.
+	1. Click the "Add" button above "Volume from host" and in the first column, choose the `config` folder created earlier. Under the `Mount Point` column enter `/config` and make sure the "Write" checkbox is selected.
 
-1. Click the "Add" button above "Volume from host" and in the first column, choose the `books` folder created earlier. Under the `Mount Point` column enter `/books` and make sure the "Write" checkbox is selected.
+	1. Click the "Add" button above "Volume from host" and in the first column, choose the `books` folder created earlier. Under the `Mount Point` column enter `/books` and make sure the "Write" checkbox is selected.
 
 1. Click on Create when done. Confirm the information is correct in the "Summary" dialog box, and click "OK".
 
@@ -36,7 +56,7 @@
 
     Password: `admin123`
 
-1. In the Database Configuration dialog box, type in `/books`.
+1. In the Database Configuration dialog box, for the database location type in `/books` or navigate to the `books` folder.
 
 Once completed, you should be seeing books immediately available for reading. Remember to change the admin password to something stronger! 
 
