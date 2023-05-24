@@ -12,9 +12,7 @@ The units tested have very limited connectivity options upon boot-up, as they do
 
 Connecting via WiFi for setup is possible if the proper associated QNAP app is installed. Consult and follow the QNAP documentation for the most up-to-date set-up options if using their app.
 
-Once connected, open a browser and navigate to the IP address:
-
-    192.168.100.1
+Once connected, open a browser and navigate to the IP address: 192.168.100.1.
 
 There, follow the first time setup options. Pay attention to the country settings. Accept the other default options.
 
