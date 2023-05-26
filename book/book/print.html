@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Digital Library DevOps</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="01_assembly.html"><strong aria-hidden="true">1.</strong> Assembly</a></li><li class="chapter-item expanded "><a href="02_server/index.html"><strong aria-hidden="true">2.</strong> The Server</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02_server/managing_container_apps.html"><strong aria-hidden="true">2.1.</strong> Managing Container Apps</a></li><li class="chapter-item expanded "><a href="02_server/calibre_web.html"><strong aria-hidden="true">2.2.</strong> Calibre-Web Setup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02_server/uploading.html"><strong aria-hidden="true">2.2.1.</strong> Enabling Uploads</a></li><li class="chapter-item expanded "><a href="02_server/users.html"><strong aria-hidden="true">2.2.2.</strong> User Setup</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Digital Library DevOps</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>This is a guide to the management and deployment of your digital library using QTS and Calibre. The digital library set consists is a storage server with multiple networking interfaces built in to enable local connections to its WiFi network. When connected to the included 5G modem, or to an active gateway, it also becomes an Internet capable device. The set also includes laptops to connect to the server for content retrieval.</p>
+<h2 id="hardware"><a class="header" href="#hardware">Hardware</a></h2>
+<p>A fully-functional digital library should include all of the following hardware as of May 2023:</p>
+<ul>
+<li>1 QMiroPlus QNAP server;</li>
+<li>1 IGE01 5G modem;</li>
+<li>3 JOI laptops.</li>
+</ul>
+<h2 id="recommendations"><a class="header" href="#recommendations">Recommendations</a></h2>
+<p>The QMiroPlus (hereafter referred to as the server) runs QTS, a NAS-centric operating system that hosts the software for managing your library. The IGE01 5G modem (hereafter referred to as the modem) provides Internet connectivity when in proximity to a 5G tower. The JOI laptops are to be connected to the network provided by the server to retrieve books from its database, and also to connect to an included Penang Digital Library subscription.</p>
+<p>We suggest placing these devices in the school MakerLab to encourage additional tinkering. Makerlab and and computer lab devices can be connected to the QMiroPlus router's WiFI router to access the 5G internet provided by the modem. These devices should be left on 24/7 to allow everyone, especially underprivileged students to use before and after school.</p>
+<h2 id="support-and-service"><a class="header" href="#support-and-service">Support and Service</a></h2>
+<h3 id="remote-support"><a class="header" href="#remote-support">Remote support</a></h3>
+<p>This digital library project will be supported remotely by being added to a VPN managed by the Penang Science Cluster. A ticket can be raised by emailing us or using the discussion section in our GitHub repository at https://github.com/PenangScienceCluster/qnap-digital-library/discussions.</p>
+<p>We encourage you to file bugs at the GitHub repository so we may easily track and triage problems with the hardware and software.</p>
+<h3 id="ytl-5g-subscription"><a class="header" href="#ytl-5g-subscription">YTL 5G Subscription</a></h3>
+<p>From 2023-05-23 to 2024-05-22, YTL shall provide a sponsored subscription to its 5G service via the IGE01 modem. After the latter date, schools may decide to renew the subscription. Pending further discussion, the subscription may require payment or be renewed for free. Schools have the freedom to switch Internet providers after the end of the service period. Unused modems owned by YTL will be collected from the schools.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="assembly"><a class="header" href="#assembly">Assembly</a></h1>
+<p>At present, we have identified an issue with connectivity between the server and the modem during initial setup that appears to be based on which devices are turned on first.</p>
+<p>We therefore suggest following the steps below in sequence:</p>
+<ol>
+<li>
+<p>Take out the IGE01 modem and follow the included instructions to plug in the power and networking cables. Turn on the device. If the illustrated instructions are missing contact support for new copies.</p>
+</li>
+<li>
+<p>Take out the QMiroPlus server and plug in the Ethernet cable from the modem into the Ethernet port labeled &quot;WAN&quot;. Note that any router or switch with Internet can be substituted here in case the included modem does not provide sufficient Internet connectivity.</p>
+</li>
+<li>
+<p>Plug in the barrel connector into the server and turn on the device by pushing the power button on the back once. The LEDs will be green when booting up; red if there is no Internet connection; and blue when there is Internet available.</p>
+</li>
+<li>
+<p>The server can be safely shutdown by holding the power button until you hear a long beep. Wait until all the smaller LEDs in the bottom left are off before unplugging the server from the power outlet.</p>
+</li>
+<li>
+<p>The laptops can be treated as standard laptops. Connect them to to router's SSID to start using them with an Internet connection.</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-server"><a class="header" href="#the-server">The Server</a></h1>
+<p>Each server runs (or will run after updates) the latest available version of QTS available from QNAP. QTS is a heavily customized Linux operating system. The main software for use, Calibre-Web, is a web service running in a Docker container that serves as the library for managing published media.</p>
+<h2 id="tailnet"><a class="header" href="#tailnet">Tailnet</a></h2>
+<p>As part of this deployment, we will also connect the server to a Tailnet, which is a special kind of VPN based on the WireGuard protocol developed by Tailscale, to allow us to properly provide remote technical assistance in a secure manner. The URL for the Tailnet and login credentials will be provided separately from this document.</p>
+<h2 id="first-connection"><a class="header" href="#first-connection">First Connection</a></h2>
+<p>The units tested have very limited connectivity options upon boot-up, as they do not yet conform to the country's regulatory radio frequency settings.  As such, we recommend connecting to the server from a laptop using an Ethernet cable, to the port labelled LAN1. The port marked WAN is for connecting to the 5G modem, or to any gateway device.</p>
+<p>Connecting via WiFi for setup is possible if the proper associated QNAP app is installed. Consult and follow the QNAP documentation for the most up-to-date set-up options if using their app.</p>
+<p>Once connected, open a browser and navigate to the IP address: 192.168.100.1.</p>
+<p>There, follow the first time setup options. Pay attention to the country settings. Accept the other default options.</p>
+<h2 id="connecting-to-the-wifi"><a class="header" href="#connecting-to-the-wifi">Connecting to the WiFi</a></h2>
+<p>The server contains its own wireless router, and is capable of routing network traffic from the Internet from the WAN port, to devices connected to the remaining Ethernet ports, and the WiFi. Details on the default WiFi SSID and password can be found in the sticker on the bottom of the server.</p>
+<h2 id="admin-account"><a class="header" href="#admin-account">Admin Account</a></h2>
+<p>The login screen for QTS, which is the main web admin interface for running web services is accessible via a web browser once you have connected your device to the WiFi SSID provided by the server, or via Ethernet. The IP address by default should be 192.168.100.100. The login details are:</p>
+<p>Username: <code>admin</code> </p>
+<p>Password: Check the sticker on the bottom of your device.</p>
+<p>We highly recommend you change the default admin account's password to something more secure. Since this is a networked device, there is a risk of your account being compromised if the password is weak. We will try our best to deploy the most hardened system we can to the user, however that will be for naught if the admin password is weak.</p>
+<p>Click on the user drop-down arrow, selecting Options &gt; Password Settings, and changing the default admin password to something else more secure. If you have problems with figuring out a secure but memorable passphrase, we recommend the Diceware method of passphrase generation. Afterwards, set up 2-Step Verification as an additional level of protection even if your passphrase is compromised.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="managing-container-apps"><a class="header" href="#managing-container-apps">Managing Container Apps</a></h1>
+<p>The digital library is being served using Docker containers. In a nutshell, running a Docker app requires firstly a Docker image, and secondly a Docker Container which will is the running app based on the Docker image. To create our library container, we will need to install the app Container Station. </p>
+<ol>
+<li>
+<p>Click on AppCenter.</p>
+</li>
+<li>
+<p>Search for and install Container Station.</p>
+</li>
+<li>
+<p>Launch Container Station and accept all default options.</p>
+</li>
+</ol>
+<p>Data is managed using volumes attached from the host file system to Docker containers. For this set-up, we will set up a non-root user to run the Docker containers, alongside volumes that are needed to store the associated app data.</p>
+<h2 id="creating-a-docker-user"><a class="header" href="#creating-a-docker-user">Creating a Docker user</a></h2>
+<ol>
+<li>
+<p>Click on Users in QTS.</p>
+</li>
+<li>
+<p>Create a user named <code>dockuser</code>.</p>
+</li>
+<li>
+<p>Set a password. Leave all settings at default options.</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-calibre-web-as-a-docker-container"><a class="header" href="#installing-calibre-web-as-a-docker-container">Installing Calibre-Web as a Docker Container</a></h1>
+<h2 id="create-calibre-web-data-folders"><a class="header" href="#create-calibre-web-data-folders">Create Calibre-Web Data Folders</a></h2>
+<ol>
+<li>
+<p>Open File Station in QTS.</p>
+</li>
+<li>
+<p>Create a Shared Folder. For Calibre, a folder named <code>calibre</code> can be created under DataVol1.</p>
+</li>
+<li>
+<p>In &quot;Configure access privileges for users&quot;, give <code>dockuser</code> read/write access. Leave the rest as default.</p>
+</li>
+<li>
+<p>In the new <code>calibre</code> shared folder, create two folders named <code>books</code> and <code>config</code>.</p>
+</li>
+<li>
+<p>Get the UID/GID of <code>dockuser</code> with <code>id dockuser</code> in ssh.</p>
+</li>
+<li>
+<p>Download our Calibre seed library to your computer at:</p>
+<p><a href="https://github.com/PenangScienceCluster/qnap-digital-library">github.com/PenangScienceCluster/qnap-digital-library</a></p>
+</li>
+<li>
+<p>Copy the contents of <code>calibre-seed/books</code> folder to the <code>books</code> folder created earlier. By navigating into the books folder, the following <code>rsync</code> command will copy the folder contents to the right folder:</p>
+<p><code>rsync -ahvz . &lt;user&gt;@&lt;hostname&gt;:/share/calibre/books/</code></p>
+</li>
+<li>
+<p>Set permissions for the folder to <code>dockuser</code> with:</p>
+<p><code>sudo chown -R &lt;UID&gt;:&lt;GID&gt; /share/calibre/books</code></p>
+</li>
+</ol>
+<h2 id="create-calibre-web-container"><a class="header" href="#create-calibre-web-container">Create Calibre-Web Container</a></h2>
+<ol>
+<li>
+<p>Open Container Station and click on Create. In the search box type in <code>calibre</code>. When you see the Docker image <code>linuxserver/calibre-web</code> click on the install button.</p>
+</li>
+<li>
+<p>Select the latest image, and click on install. Accept the disclaimer.</p>
+</li>
+<li>
+<p>In the &quot;Create Container&quot; dialog box, click on &quot;Advanced Settings&quot;.</p>
+</li>
+<li>
+<p>In Environment, create two fields, <code>PUID</code> and <code>PGID</code>, filling in the values of <code>dockuser</code> from earlier.</p>
+</li>
+<li>
+<p>Select <code>Shared Folders</code>.</p>
+<ol>
+<li>
+<p>Click the &quot;Add&quot; button above &quot;Volume from host&quot; (or &quot;Bind Mount Host Path&quot;) and in the first column, choose the <code>config</code> folder created earlier. Under the <code>Mount Point</code> column enter <code>/config</code> and make sure the &quot;Write&quot; (or RW) checkbox is selected.</p>
+</li>
+<li>
+<p>Click the &quot;Add&quot; button above &quot;Volume from host&quot; and in the first column, choose the <code>books</code> folder created earlier. Under the <code>Mount Point</code> column enter <code>/books</code> and make sure the &quot;Write&quot; (or RW) checkbox is selected.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Click on Create when done. Confirm the information is correct in the &quot;Summary&quot; dialog box, and click &quot;OK&quot;.</p>
+</li>
+</ol>
+<h2 id="first-time-configuration"><a class="header" href="#first-time-configuration">First-Time Configuration</a></h2>
+<ol>
+<li>
+<p>In Container Station's overview tab, start <code>calibre-web-1</code> (the default name given unless modified) if not started.</p>
+</li>
+<li>
+<p>Click on the blue hyperlink to bring up the container management box.</p>
+</li>
+<li>
+<p>Click on the URL. It will open Calibre-Web's first time setup page.</p>
+</li>
+<li>
+<p>The default login credentials for the admin user are:</p>
+<p>Username: <code>admin</code></p>
+<p>Password: <code>admin123</code></p>
+</li>
+<li>
+<p>In the Database Configuration dialog box, for the database location type in <code>/books</code> or navigate to the <code>books</code> folder.</p>
+</li>
+</ol>
+<p>Once completed, you should be seeing books immediately available for reading. Remember to change the admin password to something stronger! </p>
+<p>Congratulations! You now have a working library!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="enabling-uploads"><a class="header" href="#enabling-uploads">Enabling Uploads</a></h1>
+<p>There are many methods to upload books and other media to your Calibre-Web library. Here we will show you the simplest method, which is via the web interface. By default, book uploading is not activated. To begin:</p>
+<ol>
+<li>
+<p>In the Admin view, select &quot;Edit Basic Configuration&quot;.</p>
+</li>
+<li>
+<p>Open the &quot;Feature Configuration&quot; drop-down.</p>
+</li>
+<li>
+<p>Select &quot;Enable Uploads&quot; and check your reading material fileformat is in the &quot;Allowed Upload Fileformats&quot; option.</p>
+</li>
+</ol>
+<p>Using the admin account, you can immediately upload books with the &quot;Upload&quot; button that will pop up in the menubar at the top. For more fine-tuned options, we suggest creating a librarian account with permissions to upload files while reserving all other administrative options to the admin account.</p>
+<h2 id="uploading-books"><a class="header" href="#uploading-books">Uploading Books</a></h2>
+<ol>
+<li>
+<p>If your user has upload privileges, an &quot;Upload&quot; selection will be available in the menu bar. Click to begin.</p>
+</li>
+<li>
+<p>Select a books from your local device to upload to the server.</p>
+</li>
+</ol>
+<h2 id="adding-metadata"><a class="header" href="#adding-metadata">Adding Metadata</a></h2>
+<p>Calibre-Web can automatically find and add metadata to the uploaded books. There are a few quirks with the process, so here are a few tips to ensure you find your books online.</p>
+<ul>
+<li>Clear out all data except for the title and the first author.</li>
+<li>In the Fetch Metadata dialog box, choose only Amazon and Google if no results show up.</li>
+</ul>
+<p>Once you have found a matching book, click on the thumbnail image, and all available fields will be automagically populated. If it looks acceptable, click on &quot;Save&quot;.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="user-setup"><a class="header" href="#user-setup">User Setup</a></h1>
+<p>For reasons of security, if we set up the Calibre-Web container for you, we shall change the default admin password to a randomly-generated string.</p>
+<p>We will also create an example reader account, which only allows the user to read books from within the web viewer. We will or have set the username and password as the same for all participating schools so everyone can easily try the digital library.</p>
+<p>The credentials are:</p>
+<p>Username: <code>reader</code></p>
+<p>Password: <code>Read4life.</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
