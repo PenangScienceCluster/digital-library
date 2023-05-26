@@ -10,7 +10,7 @@
 
 1. In the new `calibre` shared folder, create two folders named `books` and `config`.
 
-1. Get the UID/GID of 'dockuser` with `id dockuser` in ssh.
+1. Get the UID/GID of `dockuser` with `id dockuser` in ssh.
 
 1. Download our Calibre seed library to your computer at:
 
@@ -22,7 +22,7 @@
 
 1. Set permissions for the folder to `dockuser` with:
 
-	`sudo chown -R <UID>:<GID> /share/calibre`
+	`sudo chown -R <UID>:<GID> /share/calibre/books`
 
 ## Create Calibre-Web Container
 
@@ -36,9 +36,9 @@
 
 1. Select `Shared Folders`.
 
-	1. Click the "Add" button above "Volume from host" and in the first column, choose the `config` folder created earlier. Under the `Mount Point` column enter `/config` and make sure the "Write" checkbox is selected.
+	1. Click the "Add" button above "Volume from host" (or "Bind Mount Host Path") and in the first column, choose the `config` folder created earlier. Under the `Mount Point` column enter `/config` and make sure the "Write" (or RW) checkbox is selected.
 
-	1. Click the "Add" button above "Volume from host" and in the first column, choose the `books` folder created earlier. Under the `Mount Point` column enter `/books` and make sure the "Write" checkbox is selected.
+	1. Click the "Add" button above "Volume from host" and in the first column, choose the `books` folder created earlier. Under the `Mount Point` column enter `/books` and make sure the "Write" (or RW) checkbox is selected.
 
 1. Click on Create when done. Confirm the information is correct in the "Summary" dialog box, and click "OK".
 
